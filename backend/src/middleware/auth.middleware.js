@@ -4,7 +4,7 @@ import User from "../models/user.model.js";
 export const protectRoute = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
-	console.log("Token from cookies:", token);
+    console.log("Token from cookies:", token);
     if (!token) {
       return res.status(401).json({ message: "Unauthorized - No Token Provided" });
     }
@@ -23,7 +23,7 @@ export const protectRoute = async (req, res, next) => {
 
     req.user = user;
     next();
-    
+
   } catch (error) {
     console.log("Error in protectRoute middleware:", error.message);
     if (error.name === "TokenExpiredError" || error.name === "JsonWebTokenError") {
