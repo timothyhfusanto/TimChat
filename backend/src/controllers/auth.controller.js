@@ -58,6 +58,7 @@ export const login = async (req, res) => {
 		}
 
 		generateToken(user._id, res);
+		console.log()
 		res.status(200).json(user)
 
 	} catch (error) {
